@@ -4,27 +4,27 @@
                 :rules="rules"
                 ref="loginForm"
                 v-loading="loading"
-                element-loading-text="正在登录..."
+                element-loading-text="logining..."
                 element-loading-spinner="el-icon-loading"
                 element-loading-background="rgba(0, 0, 0, 0.8)"
                 :model="loginForm"
                 class="loginContainer">
-            <h3 class="loginTitle">系统登录</h3>
+            <h3 class="loginTitle">ADMIN SYSTEM</h3>
             <el-form-item prop="username">
                 <el-input size="normal" type="text" v-model="loginForm.username" auto-complete="off"
-                          placeholder="请输入用户名"></el-input>
+                          placeholder="please input user name"></el-input>
             </el-form-item>
             <el-form-item prop="password">
                 <el-input size="normal" type="password" v-model="loginForm.password" auto-complete="off"
-                          placeholder="请输入密码"></el-input>
+                          placeholder="please input password"></el-input>
             </el-form-item>
             <el-form-item prop="code">
                 <el-input size="normal" type="text" v-model="loginForm.code" auto-complete="off"
-                          placeholder="点击图片更换验证码" @keydown.enter.native="submitLogin" style="width: 250px"></el-input>
+                          placeholder="click to switch verification code" @keydown.enter.native="submitLogin" style="width: 250px"></el-input>
                 <img :src="vcUrl" @click="updateVerifyCode" alt="" style="cursor: pointer">
             </el-form-item>
-            <el-checkbox size="normal" class="loginRemember" v-model="checked"></el-checkbox>
-            <el-button size="normal" type="primary" style="width: 100%;" @click="submitLogin">登录</el-button>
+            <!-- <el-checkbox size="normal" class="loginRemember" v-model="checked"></el-checkbox> -->
+            <el-button size="normal" type="primary" style="width: 100%;" @click="submitLogin">login</el-button>
         </el-form>
     </div>
 </template>
@@ -44,9 +44,9 @@
                 },
                 checked: true,
                 rules: {
-                    username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
-                    password: [{required: true, message: '请输入密码', trigger: 'blur'}],
-                    code: [{required: true, message: '请输入验证码', trigger: 'blur'}]
+                    username: [{required: true, message: 'please input user name', trigger: 'blur'}],
+                    password: [{required: true, message: 'please input password', trigger: 'blur'}],
+                    code: [{required: true, message: 'please input verification code', trigger: 'blur'}]
                 }
             }
         },
