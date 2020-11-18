@@ -18,11 +18,11 @@
                 <el-input size="normal" type="password" v-model="loginForm.password" auto-complete="off"
                           placeholder="please input password"></el-input>
             </el-form-item>
-            <el-form-item prop="code">
+            <!-- <el-form-item prop="code">
                 <el-input size="normal" type="text" v-model="loginForm.code" auto-complete="off"
                           placeholder="click to switch verification code" @keydown.enter.native="submitLogin" style="width: 250px"></el-input>
                 <img :src="vcUrl" @click="updateVerifyCode" alt="" style="cursor: pointer">
-            </el-form-item>
+            </el-form-item> -->
             <!-- <el-checkbox size="normal" class="loginRemember" v-model="checked"></el-checkbox> -->
             <el-button size="normal" type="primary" style="width: 100%;" @click="submitLogin">login</el-button>
         </el-form>
@@ -39,19 +39,19 @@
                 vcUrl: '/verifyCode?time='+new Date(),
                 loginForm: {
                     username: 'admin',
-                    password: '111',
-                    code:''
+                    password: '123',
+                    // code:''
                 },
                 checked: true,
                 rules: {
                     username: [{required: true, message: 'please input user name', trigger: 'blur'}],
                     password: [{required: true, message: 'please input password', trigger: 'blur'}],
-                    code: [{required: true, message: 'please input verification code', trigger: 'blur'}]
+                    // code: [{required: true, message: 'please input verification code', trigger: 'blur'}]
                 }
             }
         },
         methods: {
-            updateVerifyCode() {
+            updateVerifyCode() { 
                 this.vcUrl = '/verifyCode?time='+new Date();
             },
             submitLogin() {
@@ -65,9 +65,10 @@
                                 window.localStorage.setItem("user", JSON.stringify(resp.obj));
                                 let path = this.$route.query.redirect;
                                 this.$router.replace((path == '/' || path == undefined) ? '/home' : path);
-                            }else{
-                                this.vcUrl = '/verifyCode?time='+new Date();
                             }
+                            // else{
+                            //     this.vcUrl = '/verifyCode?time='+new Date();
+                            // }
                         })
                     } else {
                         return false;

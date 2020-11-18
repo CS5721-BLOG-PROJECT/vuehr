@@ -33,6 +33,7 @@ export const formatRoutes = (routes) => {
             iconCls: iconCls,
             meta: meta,
             children: children,
+            // dynamic load component 
             component(resolve) {
                 if (component.startsWith("Home")) {
                     require(['../views/' + component + '.vue'], resolve);
