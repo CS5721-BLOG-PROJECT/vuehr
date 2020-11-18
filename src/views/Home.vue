@@ -6,9 +6,9 @@
                 <div>
                     <el-button icon="el-icon-bell" type="text" style="margin-right: 8px;color: #000000;" size="normal" @click="goChat"></el-button>
                     <el-dropdown class="userInfo" @command="commandHandler">
-  <span class="el-dropdown-link">
-    {{user.name}}<i><img :src="user.userface" alt=""></i>
-  </span>
+                    <span class="el-dropdown-link">
+                        {{user.name}}<i><img :src="user.userface" alt=""></i>
+                    </span>
                         <el-dropdown-menu slot="dropdown">
                             <el-dropdown-item command="userinfo">Personal center</el-dropdown-item>
                             <el-dropdown-item command="setting">Settings</el-dropdown-item>
@@ -19,18 +19,29 @@
             </el-header>
              </el-container>
              <el-container>
-                 <div class="container">
+                     <el-aside width="200px">
+                    <el-menu router unique-opened>
+                        <el-submenu :index="index+''" v-for="(item,index) in routes" v-if="!item.hidden" :key="index">
+                            <template slot="title">
+                                <i style="color: #409eff;margin-right: 5px" :class="item.iconCls"></i>
+                                <span>{{item.name}}</span>
+                            </template>
+                            <el-menu-item :index="child.path" v-for="(child,indexj) in item.children" :key="indexj">
+                                {{child.name}}
+                            </el-menu-item>
+                        </el-submenu>
+                    </el-menu>
+                </el-aside>
                      <el-main>
                     <el-breadcrumb separator-class="el-icon-arrow-right" v-if="this.$router.currentRoute.path!='/home'">
                         <el-breadcrumb-item :to="{ path: '/home' }">Home</el-breadcrumb-item>
                         <el-breadcrumb-item>{{this.$router.currentRoute.name}}</el-breadcrumb-item>
                     </el-breadcrumb>
                     <div class="homeWelcome" v-if="this.$router.currentRoute.path=='/home'">
-                        欢迎来到微人事！
+                        welcome to manager system！
                     </div>
                     <router-view class="homeRouterView"/>
                 </el-main>
-                 </div>
             </el-container>
     </div>
 </template>
@@ -40,7 +51,7 @@
         name: "Home",
         data() {
             return {
-                // user: JSON.parse(window.sessionStorage.getItem("user"))
+                user: JSON.parse(window.localStorage.getItem("user"))
             }
         },
         computed: {
@@ -57,9 +68,9 @@
             },
             commandHandler(cmd) {
                 if (cmd == 'logout') {
-                    this.$confirm('此操作将注销登录, 是否继续?', '提示', {
-                        confirmButtonText: '确定',
-                        cancelButtonText: '取消',
+                    this.$confirm('This operation will log out. Do you want to continue?', 'reminder', {
+                        confirmButtonText: 'ok',
+                        cancelButtonText: 'cancel',
                         type: 'warning'
                     }).then(() => {
                         this.getRequest("/logout");
@@ -69,7 +80,7 @@
                     }).catch(() => {
                         this.$message({
                             type: 'info',
-                            message: '已取消操作'
+                            message: 'cancelled'
                         });
                     });
                 }else if (cmd == 'userinfo') {

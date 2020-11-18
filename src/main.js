@@ -120,7 +120,7 @@ router.beforeEach((to, from, next) => {
     if (to.path == '/') {
         next();
     } else {
-        if (window.sessionStorage.getItem("user")) {
+        if (window.localStorage.getItem("user")) {
             initMenu(router, store);
             next();
         } else {

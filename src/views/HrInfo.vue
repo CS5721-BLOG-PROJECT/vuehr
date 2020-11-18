@@ -37,7 +37,7 @@
             </div>
         </el-card>
         <el-dialog
-                title="修改用户信息"
+                title="edit user info"
                 :visible.sync="dialogVisible"
                 width="30%">
             <div>

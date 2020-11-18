@@ -62,7 +62,7 @@
                             this.loading = false;
                             if (resp) {
                                 this.$store.commit('INIT_CURRENTHR', resp.obj);
-                                window.sessionStorage.setItem("user", JSON.stringify(resp.obj));
+                                window.localStorage.setItem("user", JSON.stringify(resp.obj));
                                 let path = this.$route.query.redirect;
                                 this.$router.replace((path == '/' || path == undefined) ? '/home' : path);
                             }else{

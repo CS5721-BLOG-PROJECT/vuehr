@@ -15,7 +15,7 @@ const store = new Vuex.Store({
         sessions: {},
         hrs: [],
         currentSession: null,
-        currentHr: JSON.parse(window.sessionStorage.getItem("user")),
+        currentHr: JSON.parse(window.localStorage.getItem("user")),
         filterKey: '',
         stomp: null,
         isDot: {}
