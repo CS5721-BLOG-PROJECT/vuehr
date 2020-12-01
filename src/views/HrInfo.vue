@@ -36,7 +36,6 @@
           <el-tag>{{hr.address}}</el-tag>
         </div>
 
-<<<<<<< HEAD
                 <div style="display: flex;justify-content: space-around;margin-top: 10px">
                     <el-button type="primary" @click="showUpdateHrInfoView">edit info</el-button>
                     <el-button type="danger" @click="showUpdatePasswdView">change password</el-button>
@@ -93,12 +92,12 @@
                 :visible.sync="passwdDialogVisible"
                 width="30%">
             <div>
-                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
+                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="110px"
                          class="demo-ruleForm">
-                    <el-form-item label="input old password" prop="oldpass">
+                    <el-form-item label="old password" prop="oldpass">
                         <el-input type="password" v-model="ruleForm.oldpass" autocomplete="off"></el-input>
                     </el-form-item>
-                    <el-form-item label="input new password" prop="pass">
+                    <el-form-item label="new password" prop="pass">
                         <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="confirm" prop="checkPass">
@@ -112,99 +111,6 @@
             </div>
         </el-dialog>
     </div>
-=======
-        <div style="display: flex;justify-content: space-around;margin-top: 10px">
-          <el-button type="primary"
-            @click="showUpdateHrInfoView">edit info</el-button>
-          <el-button type="danger"
-            @click="showUpdatePasswdView">change password</el-button>
-        </div>
-      </div>
-    </el-card>
-    <el-dialog title="修改用户信息"
-      :visible.sync="dialogVisible"
-      width="30%">
-      <div>
-        <table>
-          <tr>
-            <td class="editTag">
-              <el-tag>Tag:</el-tag>
-            </td>
-            <td>
-              <el-input v-model="hr2.name"></el-input>
-            </td>
-          </tr>
-          <tr>
-            <td class="editTag">
-              <el-tag>landline number：</el-tag>
-            </td>
-            <td>
-              <el-input v-model="hr2.telephone"></el-input>
-            </td>
-          </tr>
-          <tr>
-            <td class="editTag">
-              <el-tag>phone number：</el-tag>
-            </td>
-            <td>
-              <el-input v-model="hr2.phone"></el-input>
-            </td>
-          </tr>
-          <tr>
-            <td class="editTag">
-              <el-tag>address</el-tag>
-            </td>
-            <td>
-              <el-input v-model="hr2.address"></el-input>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <span slot="footer"
-        class="dialog-footer">
-        <el-button @click="dialogVisible = false">cancel</el-button>
-        <el-button type="primary"
-          @click="updateHrInfo">confirm</el-button>
-      </span>
-    </el-dialog>
-    <el-dialog title="change password"
-      :visible.sync="passwdDialogVisible"
-      width="30%">
-      <div>
-        <el-form :model="ruleForm"
-          status-icon
-          :rules="rules"
-          ref="ruleForm"
-          label-width="100px"
-          class="demo-ruleForm">
-          <el-form-item label="input old password"
-            prop="oldpass">
-            <el-input type="password"
-              v-model="ruleForm.oldpass"
-              autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="input new password"
-            prop="pass">
-            <el-input type="password"
-              v-model="ruleForm.pass"
-              autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="confirm"
-            prop="checkPass">
-            <el-input type="password"
-              v-model="ruleForm.checkPass"
-              autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary"
-              @click="submitForm('ruleForm')">submit</el-button>
-            <el-button @click="resetForm('ruleForm')">reset</el-button>
-          </el-form-item>
-        </el-form>
-      </div>
-    </el-dialog>
-  </div>
->>>>>>> 583f082ccf6b8af6e45273a552bab4f7c3cb6ee9
 </template>
 
 <script>
