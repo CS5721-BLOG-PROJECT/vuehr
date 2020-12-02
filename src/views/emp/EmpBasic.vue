@@ -3,7 +3,7 @@
     <div>
       <div style="display: flex;justify-content: space-between">
         <div>
-          <el-input placeholder="请输入员工名进行搜索，可以直接回车搜索..."
+          <el-input placeholder="Please input name to search..."
             prefix-icon="el-icon-search"
             clearable
             @clear="initEmps"
@@ -15,14 +15,14 @@
             type="primary"
             @click="initEmps"
             :disabled="showAdvanceSearchView">
-            搜索
+            Search
           </el-button>
-          <el-button type="primary"
+          <!-- <el-button type="primary"
             @click="showAdvanceSearchView = !showAdvanceSearchView">
             <i :class="showAdvanceSearchView?'fa fa-angle-double-up':'fa fa-angle-double-down'"
               aria-hidden="true"></i>
             高级搜索
-          </el-button>
+          </el-button> -->
         </div>
         <div>
           <!-- <el-upload :show-file-list="false"
@@ -46,7 +46,7 @@
           <el-button type="primary"
             icon="el-icon-plus"
             @click="showAddEmpView">
-            添加用户
+            add User
           </el-button>
         </div>
       </div>
@@ -55,9 +55,9 @@
           style="border: 1px solid #409eff;border-radius: 5px;box-sizing: border-box;padding: 5px;margin: 10px 0px;">
           <el-row>
             <el-col :span="5">
-              政治面貌:
+              Politic:
               <el-select v-model="searchValue.politicId"
-                placeholder="政治面貌"
+                placeholder="Politic"
                 size="mini"
                 style="width: 130px;">
                 <el-option v-for="item in politicsstatus"
@@ -282,23 +282,24 @@
           label="合同期限">
           <template slot-scope="scope">
             <el-tag>{{scope.row.contractTerm}}</el-tag>
-            年
+            year
           </template>
         </el-table-column>
         <el-table-column fixed="right"
-          width="200"
+          width="150"
           label="操作">
           <template slot-scope="scope">
             <el-button @click="showEditEmpView(scope.row)"
-              style="padding: 3px"
-              size="mini">编辑</el-button>
-            <el-button style="padding: 3px"
+              style="padding: 6px;margin: 3px"
               size="mini"
-              type="primary">查看高级资料</el-button>
+              type="primary">edit</el-button>
+            <!-- <el-button style="padding: 3px"
+              size="mini"
+              type="primary">查看高级资料</el-button> -->
             <el-button @click="deleteEmp(scope.row)"
-              style="padding: 3px"
+              style="padding: 6px"
               size="mini"
-              type="danger">删除
+              type="danger">delete
             </el-button>
           </template>
         </el-table-column>
@@ -597,9 +598,9 @@
               <el-form-item label="婚姻状况:"
                 prop="wedlock">
                 <el-radio-group v-model="emp.wedlock">
-                  <el-radio label="已婚">已婚</el-radio>
-                  <el-radio label="未婚">未婚</el-radio>
-                  <el-radio label="离异">离异</el-radio>
+                  <el-radio label="married">已</el-radio>
+                  <el-radio label="unmarried">未</el-radio>
+                  <el-radio label="divorced">离</el-radio>
                 </el-radio-group>
               </el-form-item>
             </el-col>
@@ -650,14 +651,14 @@ export default {
       politicsstatus: [],
       positions: [],
       tiptopDegrees: [
-        "本科",
-        "大专",
-        "硕士",
-        "博士",
-        "高中",
-        "初中",
-        "小学",
-        "其他",
+        "bachelor",
+        "junior college",
+        "master",
+        "Phd",
+        "senior",
+        "middle",
+        "primary",
+        "other",
       ],
       options: [
         {
@@ -723,11 +724,11 @@ export default {
         ],
         idCard: [
           { required: true, message: "请输入身份证号码", trigger: "blur" },
-          {
-            pattern: /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/,
-            message: "身份证号码格式不正确",
-            trigger: "blur",
-          },
+          // {
+          //   pattern: /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/,
+          //   message: "身份证号码格式不正确",
+          //   trigger: "blur",
+          // },
         ],
         wedlock: [
           { required: true, message: "请输入婚姻状况", trigger: "blur" },
@@ -741,11 +742,11 @@ export default {
         ],
         email: [
           { required: true, message: "请输入邮箱地址", trigger: "blur" },
-          {
-            type: "email",
-            message: "邮箱格式不正确",
-            trigger: "blur",
-          },
+          // {
+          //   type: "email",
+          //   message: "邮箱格式不正确",
+          //   trigger: "blur",
+          // },
         ],
         phone: [{ required: true, message: "请输入电话号码", trigger: "blur" }],
         address: [
@@ -826,31 +827,31 @@ export default {
     },
     emptyEmp() {
       this.emp = {
-        name: "",
+        name: "test",
         gender: "",
-        birthday: "",
-        idCard: "",
-        wedlock: "",
+        birthday: "2020-12-01",
+        idCard: "11243523432",
+        wedlock: "married",
         nationId: 1,
-        nativePlace: "",
+        nativePlace: "GUANGXI",
         politicId: 13,
-        email: "",
-        phone: "",
-        address: "",
+        email: "test@test.com",
+        phone: "1234567890",
+        address: "test_address",
         departmentId: null,
         jobLevelId: 9,
         posId: 29,
         engageForm: "",
-        tiptopDegree: "",
-        specialty: "",
-        school: "",
-        beginDate: "",
+        tiptopDegree: "master",
+        specialty: "software engineering",
+        school: "UL",
+        beginDate: "2020-12-01",
         workID: "",
         contractTerm: 2,
-        conversionTime: "",
+        conversionTime: "2020-12-01",
         notworkDate: null,
-        beginContract: "",
-        endContract: "",
+        beginContract: "2020-12-01",
+        endContract: "2020-12-01",
         workAge: null,
       };
       this.inputDepName = "";
