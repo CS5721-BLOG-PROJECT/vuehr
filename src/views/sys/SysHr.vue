@@ -1,9 +1,9 @@
 <template>
     <div>
         <div style="margin-top: 10px;display: flex;justify-content: center">
-            <el-input v-model="keywords" placeholder="通过用户名搜索用户..." prefix-icon="el-icon-search"
+            <el-input v-model="keywords" placeholder="input username to search..." prefix-icon="el-icon-search"
                       style="width: 400px;margin-right: 10px" @keydown.enter.native="doSearch"></el-input>
-            <el-button icon="el-icon-search" type="primary" @click="doSearch">搜索</el-button>
+            <el-button icon="el-icon-search" type="primary" @click="doSearch">search</el-button>
         </div>
         <div class="hr-container">
             <el-card class="hr-card" v-for="(hr,index) in hrs" :key="index">
@@ -17,32 +17,32 @@
                         <img :src="hr.userface" :alt="hr.name" :title="hr.name" class="userface-img">
                     </div>
                     <div class="userinfo-container">
-                        <div>用户名：{{hr.name}}</div>
-                        <div>手机号码：{{hr.phone}}</div>
-                        <div>电话号码：{{hr.telephone}}</div>
-                        <div>地址：{{hr.address}}</div>
-                        <div>用户状态：
+                        <div>username：{{hr.name}}</div>
+                        <div>photo：{{hr.phone}}</div>
+                        <div>telephone：{{hr.telephone}}</div>
+                        <div>address：{{hr.address}}</div>
+                        <div>user state：
                             <el-switch
                                     v-model="hr.enabled"
-                                    active-text="启用"
+                                    active-text="open"
                                     @change="enabledChange(hr)"
                                     active-color="#13ce66"
                                     inactive-color="#ff4949"
-                                    inactive-text="禁用">
+                                    inactive-text="close">
                             </el-switch>
                         </div>
-                        <div>用户角色：
+                        <div>user role：
                             <el-tag type="success" style="margin-right: 4px" v-for="(role,indexj) in hr.roles"
                                     :key="indexj">{{role.nameZh}}
                             </el-tag>
                             <el-popover
                                     placement="right"
-                                    title="角色列表"
+                                    title="role list"
                                     @show="showPop(hr)"
                                     @hide="hidePop(hr)"
                                     width="200"
                                     trigger="click">
-                                <el-select v-model="selectedRoles" multiple placeholder="请选择">
+                                <el-select v-model="selectedRoles" multiple placeholder="please select">
                                     <el-option
                                             v-for="(r,indexk) in allroles"
                                             :key="indexk"
@@ -53,7 +53,7 @@
                                 <el-button slot="reference" icon="el-icon-more" type="text"></el-button>
                             </el-popover>
                         </div>
-                        <div>备注：{{hr.remark}}</div>
+                        <div>remark：{{hr.remark}}</div>
                     </div>
                 </div>
             </el-card>
@@ -78,9 +78,9 @@
         },
         methods: {
             deleteHr(hr) {
-                this.$confirm('此操作将永久删除【'+hr.name+'】, 是否继续?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
+                this.$confirm('This operation will delete【'+hr.name+'】, do you still continue?', 'Warning', {
+                    confirmButtonText: 'confirm',
+                    cancelButtonText: 'cancel',
                     type: 'warning'
                 }).then(() => {
                     this.deleteRequest("/system/hr/"+hr.id).then(resp=>{
@@ -91,7 +91,7 @@
                 }).catch(() => {
                     this.$message({
                         type: 'info',
-                        message: '已取消删除'
+                        message: 'has cancel delete operation'
                     });
                 });
             },
