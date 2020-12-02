@@ -75,6 +75,7 @@
                     }).then(() => {
                         this.getRequest("/logout");
                         window.sessionStorage.removeItem("user")
+                         window.sessionStorage.removeItem("token")
                         this.$store.commit('initRoutes', []);
                         this.$router.replace("/");
                     }).catch(() => {

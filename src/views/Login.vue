@@ -36,7 +36,7 @@
         data() {
             return {
                 loading: false,
-                vcUrl: '/verifyCode?time='+new Date(),
+                // vcUrl: '/verifyCode?time='+new Date(),
                 loginForm: {
                     username: 'admin',
                     password: '123',
@@ -51,9 +51,9 @@
             }
         },
         methods: {
-            updateVerifyCode() { 
-                this.vcUrl = '/verifyCode?time='+new Date();
-            },
+            // updateVerifyCode() { 
+            //     this.vcUrl = '/verifyCode?time='+new Date();
+            // },
             submitLogin() {
                 this.$refs.loginForm.validate((valid) => {
                     if (valid) {
@@ -63,6 +63,7 @@
                             if (resp) {
                                 this.$store.commit('INIT_CURRENTHR', resp.obj);
                                 window.localStorage.setItem("user", JSON.stringify(resp.obj));
+                                window.localStorage.setItem("token", JSON.stringify(resp.obj.token));
                                 let path = this.$route.query.redirect;
                                 this.$router.replace((path == '/' || path == undefined) ? '/home' : path);
                             }
