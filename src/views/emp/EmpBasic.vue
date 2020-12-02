@@ -68,9 +68,9 @@
               </el-select>
             </el-col>
             <el-col :span="4">
-              nation:
+              Nationality:
               <el-select v-model="searchValue.nationId"
-                placeholder="nation"
+                placeholder="Nationality"
                 size="mini"
                 style="width: 130px;">
                 <el-option v-for="item in nations"
@@ -81,9 +81,9 @@
               </el-select>
             </el-col>
             <el-col :span="4">
-              position:
+              Position:
               <el-select v-model="searchValue.posId"
-                placeholder="position"
+                placeholder="Position"
                 size="mini"
                 style="width: 130px;">
                 <el-option v-for="item in positions"
@@ -200,7 +200,7 @@
         </el-table-column>
         <el-table-column prop="nation.name"
           width="50"
-          label="民族">
+          label="Nationality">
         </el-table-column>
         <el-table-column prop="nativePlace"
           width="80"
@@ -231,7 +231,7 @@
         </el-table-column>
         <el-table-column prop="position.name"
           width="100"
-          label="职位">
+          label="Position">
         </el-table-column>
         <el-table-column prop="jobLevel.name"
           width="100"
@@ -370,10 +370,10 @@
           </el-row>
           <el-row>
             <el-col :span="6">
-              <el-form-item label="民族:"
+              <el-form-item label="Nationality:"
                 prop="nationId">
                 <el-select v-model="emp.nationId"
-                  placeholder="民族"
+                  placeholder="Nationality"
                   size="mini"
                   style="width: 150px;">
                   <el-option v-for="item in nations"
@@ -417,10 +417,10 @@
           </el-row>
           <el-row>
             <el-col :span="6">
-              <el-form-item label="职位:"
+              <el-form-item label="Position:"
                 prop="posId">
                 <el-select v-model="emp.posId"
-                  placeholder="职位"
+                  placeholder="Position"
                   size="mini"
                   style="width: 150px;">
                   <el-option v-for="item in positions"
@@ -758,7 +758,7 @@ export default {
         jobLevelId: [
           { required: true, message: "请输入职称", trigger: "blur" },
         ],
-        posId: [{ required: true, message: "请输入职位", trigger: "blur" }],
+        posId: [{ required: true, message: "请输入Position", trigger: "blur" }],
         engageForm: [
           { required: true, message: "请输入聘用形式", trigger: "blur" },
         ],
