@@ -50,7 +50,7 @@
           </el-button>
         </div>
       </div>
-      <transition name="slide-fade">
+      <!-- <transition name="slide-fade">
         <div v-show="showAdvanceSearchView"
           style="border: 1px solid #409eff;border-radius: 5px;box-sizing: border-box;padding: 5px;margin: 10px 0px;">
           <el-row>
@@ -68,9 +68,9 @@
               </el-select>
             </el-col>
             <el-col :span="4">
-              民族:
+              nation:
               <el-select v-model="searchValue.nationId"
-                placeholder="民族"
+                placeholder="nation"
                 size="mini"
                 style="width: 130px;">
                 <el-option v-for="item in nations"
@@ -81,9 +81,9 @@
               </el-select>
             </el-col>
             <el-col :span="4">
-              职位:
+              position:
               <el-select v-model="searchValue.posId"
-                placeholder="职位"
+                placeholder="position"
                 size="mini"
                 style="width: 130px;">
                 <el-option v-for="item in positions"
@@ -94,9 +94,9 @@
               </el-select>
             </el-col>
             <el-col :span="4">
-              职称:
+              jobLevel:
               <el-select v-model="searchValue.jobLevelId"
-                placeholder="职称"
+                placeholder="jobLevel"
                 size="mini"
                 style="width: 130px;">
                 <el-option v-for="item in joblevels"
@@ -107,18 +107,18 @@
               </el-select>
             </el-col>
             <el-col :span="7">
-              聘用形式:
+              engageForm:
               <el-radio-group v-model="searchValue.engageForm">
-                <el-radio label="劳动合同">劳动合同</el-radio>
+                <el-radio label="劳动合同"></el-radio>
                 <el-radio label="劳务合同">劳务合同</el-radio>
               </el-radio-group>
             </el-col>
           </el-row>
           <el-row style="margin-top: 10px">
             <el-col :span="5">
-              所属部门:
+              department:
               <el-popover placement="right"
-                title="请选择部门"
+                title="please select department"
                 width="200"
                 trigger="manual"
                 v-model="popVisible2">
@@ -154,14 +154,14 @@
             </el-col>
           </el-row>
         </div>
-      </transition>
+      </transition> -->
     </div>
     <div style="margin-top: 10px">
       <el-table :data="emps"
         stripe
         border
         v-loading="loading"
-        element-loading-text="正在加载..."
+        element-loading-text="loading..."
         element-loading-spinner="el-icon-loading"
         element-loading-background="rgba(0, 0, 0, 0.8)"
         style="width: 100%">
@@ -171,11 +171,11 @@
         <el-table-column prop="name"
           fixed
           align="left"
-          label="姓名"
+          label="Name"
           width="90">
         </el-table-column>
         <el-table-column prop="workID"
-          label="工号"
+          label="WorkID"
           align="left"
           width="85">
         </el-table-column>

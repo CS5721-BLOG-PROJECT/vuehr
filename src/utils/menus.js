@@ -49,9 +49,9 @@ export const formatRoutes = (routes) => {
                 else if (component.startsWith("Sta")) {
                     require(['../views/sta/' + component + '.vue'], resolve);
                 } 
-                // else if (component.startsWith("Sys")) {
-                //     require(['../views/sys/' + component + '.vue'], resolve);
-                // }
+                else if (component.startsWith("Sys")) {
+                    require(['../views/sys/' + component + '.vue'], resolve);
+                }
             }
         }
         fmRoutes.push(fmRouter);

@@ -19,7 +19,7 @@
             </el-header>
              </el-container>
              <el-container>
-                     <el-aside width="200px">
+                     <el-aside width="270px">
                     <el-menu router unique-opened>
                         <el-submenu :index="index+''" v-for="(item,index) in routes" v-if="!item.hidden" :key="index">
                             <template slot="title">
