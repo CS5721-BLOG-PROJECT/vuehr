@@ -27,8 +27,8 @@
                 </el-table-column>
                 <el-table-column label="Operation">
                     <template slot-scope="scope">
-                        <el-button @click="showEditSalaryView(scope.row)">Edit</el-button>
-                        <el-button type="danger" @click="deleteSalary(scope.row)">Delete</el-button>
+                        <el-button @click="showEditSalaryView(scope.row)" class="operationbutton">Edit</el-button>
+                        <el-button type="danger" @click="deleteSalary(scope.row)" class="operationbutton">Delete</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -186,5 +186,8 @@
 </script>
 
 <style scoped>
-
+.operationbutton{
+    float:left;
+    margin:5px 10px;
+}
 </style>
